@@ -1,5 +1,8 @@
 """模型组件共用的参数初始化规则。"""
 
+# 线性层 - mean=0, std=0.02
+# 归一化层 - weight=1, bias=0
+
 from torch import nn
 
 
