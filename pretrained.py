@@ -18,6 +18,8 @@ def load_pretrained_encoder(
     建议在模型迁移到 GPU、创建优化器之前调用。
     """
     checkpoint_path = Path(checkpoint_path).expanduser()
+
+
     if not checkpoint_path.is_file():
         raise FileNotFoundError(f"预训练权重文件不存在：{checkpoint_path}")
 
@@ -25,6 +27,8 @@ def load_pretrained_encoder(
     checkpoint = torch.load(
         checkpoint_path, map_location="cpu", weights_only=True
     )
+
+
     if not isinstance(checkpoint, Mapping) or not isinstance(
         checkpoint.get("model"), Mapping
     ):
@@ -32,6 +36,7 @@ def load_pretrained_encoder(
     state_dict = checkpoint["model"]
     if not all(isinstance(key, str) for key in state_dict):
         raise ValueError("预训练参数名称必须为字符串")
+
 
     encoder_weights = {
         key: value for key, value in state_dict.items()

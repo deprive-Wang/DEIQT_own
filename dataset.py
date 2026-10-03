@@ -56,6 +56,8 @@ class LiveChallengeDataset(Dataset):
             raise ValueError("indices 必须是非空整数序列，索引范围为 0 到 1161")
         if len(set(self.indices)) != len(self.indices):
             raise ValueError("indices 不得重复；重复裁剪由 patch_num 控制")
+
+
         self.patch_num = patch_num
         self.is_train = is_train
         self.transform = build_transform("livec", is_train)
@@ -68,6 +70,7 @@ class LiveChallengeDataset(Dataset):
         scores = scores_data["AllMOS_release"]
         if names.shape != (1169, 1) or scores.shape != (1, 1169):
             raise ValueError("LIVE-C 原始标签应含 1169 项：图像名 [1169, 1]、MOS [1, 1169]")
+
 
         # 前七项用于人类受试者熟悉评分，不是机器学习的训练集合。
         image_names = []

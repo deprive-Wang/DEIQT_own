@@ -10,7 +10,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from model import DEIQT
 from optimizer import build_optimizer
 from lr_scheduler import WarmupStepLR
-from training import train_one_epoch
+from train import train_one_epoch
 
 
 class OptimizerTests(unittest.TestCase):

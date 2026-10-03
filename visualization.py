@@ -1,9 +1,13 @@
 """TensorBoard 日志：记录训练曲线、测试指标和多次实验的汇总结果。"""
 
+from __future__ import annotations
+
 import json
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-from training import TrainEpochResult
+if TYPE_CHECKING:
+    from train import TrainEpochResult
 
 
 class TensorBoardLogger:

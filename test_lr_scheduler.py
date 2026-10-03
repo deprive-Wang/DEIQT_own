@@ -7,7 +7,7 @@ from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 
 from lr_scheduler import WarmupStepLR
-from training import train_one_epoch
+from train import train_one_epoch
 
 
 class RecordingSGD(torch.optim.SGD):
