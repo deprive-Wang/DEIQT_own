@@ -335,6 +335,9 @@ def run_training(args: argparse.Namespace) -> Path:
                 "best": next_best,
             }, inference_state if improved else None)
             history, best = next_history, next_best
+
+
+
             with (args.output / "metrics.csv").open("w", newline="", encoding="utf-8") as file:
                 writer = csv.DictWriter(file, fieldnames=list(row))
                 writer.writeheader()
@@ -351,6 +354,9 @@ def run_training(args: argparse.Namespace) -> Path:
         logger.exception("运行中断；last.pth 的 evaluation_status 区分待评估/已评估状态；"
                          "summary.json 只记录此前已完成输出的轮次。")
         raise
+
+
+    
     finally:
         try:
             if visualizer is not None:
